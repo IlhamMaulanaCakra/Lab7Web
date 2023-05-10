@@ -1,4 +1,4 @@
-# Lab4Web
+# Lab7Web
 
 <h3>Biodata Mahasiswa</h3>           
     <table>

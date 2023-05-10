@@ -161,16 +161,21 @@ Router terletak pada file app/config/Routes.php
 
 Pada file tersebut kita dapat mendefinisikan route untuk aplikasi yang kita buat.
 Contoh:
+
 ```$routes->get('/', 'Home::index');```
 
 Kode tersebut akan mengarahkan rute untuk halaman home.
+
 <b>Membuat Route Baru.</b>
+
 Tambahkan kode berikut di dalam Routes.php
-```$routes->get('/about', 'Page::about');
+
+`$routes->get('/about', 'Page::about');
 $routes->get('/contact', 'Page::contact');
-$routes->get('/faqs', 'Page::faqs');```
+$routes->get('/faqs', 'Page::faqs');`
 
 Untuk mengetahui route yang ditambahkan sudah benar, buka CLI dan jalankan perintah berikut.
+
 ```php spark routes```
 
 ![Screenshot (36)](https://github.com/IlhamMaulanaCakra/Lab7Web/assets/92771347/e15b17b7-f13a-4170-9eb4-f7e25f41b039)
@@ -188,8 +193,9 @@ routing yang dibuat yaitu Contoller Page.
 
 Selanjutnya adalah membuat Controller Page. Buat file baru dengan nama page.php pada direktori
 Controller kemudian isi kodenya seperti berikut.
-```<?php
 
+```
+<?php
 namespace App\Controllers;
 
 class Page extends BaseController
@@ -206,7 +212,8 @@ class Page extends BaseController
     {
         echo "Ini halaman FAQ";
 }
-}```
+}
+```
 
 Selanjutnya refresh Kembali browser, maka akan ditampilkan hasilnya yaotu halaman sudah dapat
 diakses.
@@ -217,13 +224,17 @@ diakses.
 
 Secara default fitur autoroute pada Codeiginiter sudah aktif. Untuk mengubah status autoroute dapat
 mengubah nilai variabelnya. Untuk menonaktifkan ubah nilai true menjadi false.
-```$routes->setAutoRoute(true);```
+
+```
+$routes->setAutoRoute(true);
 
 Tambahkan method baru pada Controller Page seperti berikut.
-```public function tos()
+
+public function tos()
 {
     echo "ini halaman Term of Services";
-}```
+}
+```
 
 Method ini belum ada pada routing, sehingga cara mengaksesnya dengan menggunakan alamat:
 http://localhost:8080/page/tos
@@ -234,7 +245,9 @@ http://localhost:8080/page/tos
 
 Selanjutnya adalam membuat view untuk tampilan web agar lebih menarik. Buat file baru dengan
 nama about.php pada direktori view (app/view/about.php) kemudian isi kodenya seperti berikut.
-```<!DOCTYPE html>
+
+```
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -245,17 +258,20 @@ nama about.php pada direktori view (app/view/about.php) kemudian isi kodenya sep
     <hr>
     <p><?= $content; ?></p>
 </body>
-</html>```
+</html>
+```
 
 Ubah method about pada class Controller Page menjadi seperti berikut:
-```public function about()
+```
+public function about()
 {
     return view('about', [
         'title' => 'Halaman Abot',
         'content' => 'Ini adalah halaman abaut yang menjelaskan tentang isi
 halaman ini.'
     ]);
-}```
+}
+```
 
 Kemudian lakukan refresh pada halaman tersebut.
 
@@ -273,7 +289,9 @@ akan gunakan layout yang pernah dibuat pada praktikum 4.
 
 Kemudian buat folder template pada direktori view kemudian buat file header.php dan footer.php
 File app/view/template/header.php
-```<!DOCTYPE html>
+
+```
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -292,10 +310,12 @@ File app/view/template/header.php
         <a href="<?= base_url('/contact');?>">Kontak</a>
     </nav>
     <section id="wrapper">
-        <section id="main">```
-        
+        <section id="main">
+```
+
 File app/view/template/footer.php
-```</section>
+```
+</section>
         <aside id="sidebar">
             <div class="widget-box">
                 <h3 class="title">Widget Header</h3>
@@ -317,15 +337,18 @@ File app/view/template/footer.php
     </footer>
     </div>
 </body>
-</html>```
+</html>
+```
 
 Kemudian ubah file app/view/about.php seperti berikut.
-```<?= $this->include('template/header'); ?>
+
+```
+<?= $this->include('template/header'); ?>
 <h1><?= $title; ?></h1>
 <hr>
 <p><?= $content; ?></p>
-<?= $this->include('template/footer'); ?>```
-
+<?= $this->include('template/footer'); ?>
+```
 Selanjutnya refresh tampilan pada alamat http://localhost:8080/about
 
 ![Screenshot (42)](https://github.com/IlhamMaulanaCakra/Lab7Web/assets/92771347/63899e50-e04c-4cca-94fd-9a38b6cb7a4a)
